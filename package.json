@@ -1,0 +1,17 @@
+{
+  "name": "sqlserverapilayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "nodeServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "api-schema-builder": "^2.0.11",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mssql": "^10.0.2"
+  }
+}
