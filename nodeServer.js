@@ -4,7 +4,7 @@ const mssql = require('mssql');
 
 // Create Express application
 const app = express();
-const port = process.env.PORT || 443;
+const port = process.env.PORT || 1443;
 
 // Define valid API keys (replace with your actual API keys)
 const validApiKeys = ['e511b839-3986-470c', '0c02c658-5190-4256'];
