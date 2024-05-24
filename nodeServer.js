@@ -4,10 +4,10 @@ const mssql = require('mssql');
 
 // Create Express application
 const app = express();
-const port = process.env.PORT || 1433;
+const port = process.env.PORT || 443;
 
 // Define valid API keys (replace with your actual API keys)
-const validApiKeys = ['your_api_key_1', 'your_api_key_2'];
+const validApiKeys = ['e511b839-3986-470c', '0c02c658-5190-4256'];
 
 // Middleware to validate API key
 const validateApiKey = (req, res, next) => {
