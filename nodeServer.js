@@ -37,7 +37,13 @@ const config = {
 app.get('/orders', async (req, res) => {
   try {
     const pool = await new mssql.ConnectionPool(config).connect();
-    const result = await pool.request().query('SELECT TOP 1 PERCENT * FROM dbo.Prescriptions WHERE Rx_Fill_Detail_Current_State <> \'Cancelled\'');
+    const result = await pool.request().query('SELECT Patient_Reference_ID, RecordID, Rx_Number, Rx_Fill_Detail_Current_State, ' +
+     'Rx_Fill_Shipping_Carrier_Name, Rx_Fill_Tracking_Number, ' + 
+     'Patient_Birthday, Drug_Prescribed_Name, Rx_Written_Date, Rx_Fill_Ship_Date, Rx_Pricing_Schedule ' +
+     'FROM [dbo].[Prescriptions] ' +
+     'WHERE Rx_Fill_Ship_Date BETWEEN DATEADD(DAY, -31, GETDATE()) AND GETDATE() ' +
+     'AND Rx_Fill_Detail_Current_State <> \'Cancelled\' AND Rx_Pricing_Schedule != \'UAS\' ' +
+     'ORDER BY Rx_Fill_Ship_Date DESC');
     res.json(result.recordset);
   } catch (err) {
     console.error('Error retrieving orders:', err);
